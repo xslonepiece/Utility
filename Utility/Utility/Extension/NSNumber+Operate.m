@@ -15,16 +15,16 @@
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     formatter.numberStyle = NSNumberFormatterDecimalStyle;
     // 保留两位小数
-    formatter.roundingMode = kCFNumberFormatterRoundFloor;// 值变小
     formatter.maximumFractionDigits = 2;
-    NSString *amountString = [formatter stringFromNumber:@(self.doubleValue + 0.005)];
-    NSRange range = [amountString rangeOfString:@"."];
-    if (range.location == NSNotFound) {// 没有小数
-        return [NSString stringWithFormat:@"%@.00",amountString];
-    }else if(range.location == amountString.length - 2){// 只有一位小数
-        return [NSString stringWithFormat:@"%@0",amountString];
-    }// 两位以上小数找后台😄
-    return amountString;
+    formatter.minimumFractionDigits = 2;
+    if ([self isNegative]) {
+        formatter.roundingMode = kCFNumberFormatterRoundCeiling;
+        return [formatter stringFromNumber:@(self.doubleValue - 0.005)];
+    }else{
+        formatter.roundingMode = kCFNumberFormatterRoundFloor;// 值变小
+        return [formatter stringFromNumber:@(self.doubleValue + 0.005)];
+
+    }
 }
 
 /** 数量千分制 */
@@ -46,13 +46,14 @@
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     // 保留两位小数
     formatter.maximumFractionDigits = 2;
+    formatter.minimumIntegerDigits = 1;
     formatter.roundingMode = kCFNumberFormatterRoundFloor;// 值变小
     double rateValue = self.doubleValue * 100.f;
     return [formatter stringFromNumber:@(rateValue + 0.005)];
 }
 
 - (BOOL)overWan{
-    return self.doubleValue > 10000.00;
+    return self.doubleValue >= 10000.00 || self.doubleValue <= -10000.00;
 }
 
 - (BOOL)overHundred{

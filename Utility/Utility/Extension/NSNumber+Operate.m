@@ -23,7 +23,6 @@
     }else{
         formatter.roundingMode = kCFNumberFormatterRoundFloor;// 值变小
         return [formatter stringFromNumber:@(self.doubleValue + 0.005)];
-
     }
 }
 

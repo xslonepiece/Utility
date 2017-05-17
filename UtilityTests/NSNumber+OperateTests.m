@@ -132,4 +132,19 @@
     XCTAssertTrue(@(1).overZero);
 }
 
+/** 是否等于0 **/
+- (void)testIsZero{
+    XCTAssertTrue(@(-0).isZero);
+    XCTAssertTrue(@(0).isZero);
+    XCTAssertFalse(@(1).isZero);
+    XCTAssertFalse(@(-1).isZero);
+    // 临界值(64位)
+    XCTAssertTrue(@(-0.000000000000000000000000000000000000001).isZero);
+    XCTAssertFalse(@(-0.00000000000000000000000000000000000001).isZero);
+    XCTAssertTrue(@(0.000000000000000000000000000000000000001).isZero);
+    XCTAssertFalse(@(0.00000000000000000000000000000000000001).isZero);
+
+
+}
+
 @end

@@ -67,8 +67,8 @@
     return self.doubleValue > 0.0f;
 }
 
-//- (BOOL)isZero{
-//    
-//}
+- (BOOL)isZero{
+    return self.doubleValue < 1/ MAXFLOAT && self.doubleValue > -1 / MAXFLOAT;
+}
 
 @end

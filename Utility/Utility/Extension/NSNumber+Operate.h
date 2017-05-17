@@ -31,5 +31,8 @@
 /** 是否大于0 **/
 - (BOOL)overZero;
 
+/** 是否等于0 **/
+- (BOOL)isZero;
+
 @end
 

@@ -2,8 +2,8 @@
 //  NSNumber+Operate.m
 //  kdweibo
 //
-//  Created by xsl on 2017/4/24.
-//  Copyright © 2017年 www.kingdee.com. All rights reserved.
+//  Created by onepiece on 2017/4/24.
+//  Copyright © 2017年 onepiece. All rights reserved.
 //
 
 #import "NSNumber+Operate.h"

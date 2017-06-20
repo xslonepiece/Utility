@@ -21,10 +21,19 @@ typedef enum : NSUInteger {
 
 @interface GradientButton : UIButton
 
+
+
 /**
  *  设置渐变颜色变化数组
  *  @param colors   渐变颜色数组
  *  @param state    按钮状态
+ */
+
+/**
+ <#Description#>
+
+ @param colors <#colors description#>
+ @param state <#state description#>
  */
 - (void)setGradientColors:(NSArray <UIColor *> *)colors forState:(UIControlState)state;
 
